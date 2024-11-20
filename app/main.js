@@ -1,5 +1,6 @@
 import "./style.css";
-const URL = https://openlibrary.org/search.json?q=the+lord+of+the+rings
+const URL = "https://api.edamam.com/doc/open-api/recipe-search-v2.json"
+
 
 async function getData(URL) {
     try {
@@ -11,4 +12,10 @@ async function getData(URL) {
     }
 }
 
-getData();
+function pushdata(container) {
+    container = document.querySelector("api-data");
+    getData(URL);
+    container.push(data);
+}
+pushdata();
+

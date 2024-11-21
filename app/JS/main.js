@@ -1,6 +1,5 @@
-import "./style.css";
+import "/CSS/style.css";
 const URL = "https://api.edamam.com/doc/open-api/recipe-search-v2.json"
-
 
 async function getData(URL) {
     try {
@@ -12,10 +11,9 @@ async function getData(URL) {
     }
 }
 
-function pushdata(container) {
-    container = document.querySelector("api-data");
+function pushdata() {
+    const container = document.querySelector("api-data");
     getData(URL);
-    container.push(data);
+    data.append(container);
 }
 pushdata();
-

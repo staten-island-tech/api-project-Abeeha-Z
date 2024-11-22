@@ -13,7 +13,5 @@ async function getData(URL) {
 
 function pushdata() {
     const container = document.querySelector("api-data");
-    getData(URL);
-    data.append(container);
-}
+    }
 pushdata();

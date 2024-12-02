@@ -1,23 +1,30 @@
-const URL =
-  "https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup";
+const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0';
 const options = {
-  method: "GET",
-  headers: {
-    "x-rapidapi-key": "11bed04c27mshb6f8302c8454cabp10afc7jsnc701adc4abf2",
-    "x-rapidapi-host": "tasty.p.rapidapi.com",
-  },
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': '11bed04c27mshb6f8302c8454cabp10afc7jsnc701adc4abf2',
+		'x-rapidapi-host': 'tasty.p.rapidapi.com'
+	}
 };
-
 async function getData() {
   try {
-    const response = await fetch(URL, options);
-    const data = await response.json();
-    console.log(data);
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 getData();
+async function injectRecipes() {
+  const container = document.getElementById("recipes");
+  const recipes = await getData(url);
+  container.innerHTML = `Recipes: ${recipes.name}`;
+}
+
+injectRecipes();
+
+
 // container.insertAdjacentHTML(
 //   "beforeend",
 //   `

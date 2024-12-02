@@ -1,24 +1,23 @@
-import "/CSS/style.css";
-async function fetchData() {
-  const url =
-    "https://tasty.p.rapidapi.com/recipes/list-similarities?recipe_id=8138";
-  const options = {
-    method: "GET",
-    headers: {
-      "x-rapidapi-key": "11bed04c27mshb6f8302c8454cabp10afc7jsnc701adc4abf2",
-      "x-rapidapi-host": "tasty.p.rapidapi.com",
-    },
-  };
+const URL =
+  "https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup";
+const options = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-key": "11bed04c27mshb6f8302c8454cabp10afc7jsnc701adc4abf2",
+    "x-rapidapi-host": "tasty.p.rapidapi.com",
+  },
+};
 
+async function getData() {
   try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    console.log(result);
+    const response = await fetch(URL, options);
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
-    console.error("Fetch Error: ", error);
+    console.log(error);
   }
 }
-fetchData();
+getData();
 // container.insertAdjacentHTML(
 //   "beforeend",
 //   `

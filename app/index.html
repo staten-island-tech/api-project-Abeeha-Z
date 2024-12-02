@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Filter</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div id="recipe-container"></div>
-  <script type="module" src="./JS/main.js"></script>
-</body>
+  <header>
+    <h1>Recipe Finder</h1>
+    <div id="filters">
+      <select id="meal-type">
+        <option value="">Select Meal</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+      </select>
+      <select id="cuisine">
+        <option value="">Select Cuisine</option>
+        <option value="Italian">Italian</option>
+        <option value="Mexican">Mexican</option>
+        <option value="Asian">Asian</option>
+      </select>
+    </div>
+  </header>
+  
+  <div id="recipe-list"></div>
 
+  <script src="app.js"></script>
+</body>
 </html>

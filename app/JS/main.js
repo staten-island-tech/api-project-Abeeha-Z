@@ -1,4 +1,4 @@
-const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0';
+const url = 'https://tasty.p.rapidapi.com/recipes/list?from=0&size=40';
 const options = {
 	method: 'GET',
 	headers: {
@@ -6,23 +6,35 @@ const options = {
 		'x-rapidapi-host': 'tasty.p.rapidapi.com'
 	}
 };
+
 async function getData() {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
     console.log(result);
+    return result
   } catch (error) {
     console.error(error);
   }
 }
-getData();
-async function injectRecipes() {
-  const container = document.getElementById("recipes");
-  const recipes = await getData(url);
-  container.innerHTML = `Recipes: ${recipes.name}`;
-}
 
-injectRecipes();
+
+const container = document.getElementById("recipes");
+const showRecipes = async () => {
+    // defining an async arrow function
+  const recipes = await getData(url);
+  console.log('Data Found');
+  for(let i = 0; i < recipes.results.length; i++) { 
+    console.log('works')
+    container.innerHTML += `
+    Name: ${recipes.results[i].name}<br>
+    Description: ${recipes.results[i].description}<br>
+    <img src='${recipes.results[i].thumbnail_url}'>
+    `;
+  }
+};
+
+showRecipes();
 
 
 // container.insertAdjacentHTML(

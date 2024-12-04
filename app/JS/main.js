@@ -17,7 +17,9 @@ async function getData() {
     console.log(error);
   }
 }
+
 getData();
+
 // container.insertAdjacentHTML(
 //   "beforeend",
 //   `

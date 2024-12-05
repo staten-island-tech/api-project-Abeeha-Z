@@ -28,9 +28,11 @@ const showRecipes = async () => {
   for (let i = 0; i < recipes.results.length; i++) {
     console.log("works");
     container.innerHTML += `
+    <div>
     Name: ${recipes.results[i].name}<br>
     Description: ${recipes.results[i].description}<br>
     <img src='${recipes.results[i].thumbnail_url}'>
+    </div>
     `;
   }
 };

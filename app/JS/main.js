@@ -29,12 +29,12 @@ const showRecipes = async () => {
     //if recipe has a thumbnail, url and description
     container.innerHTML += `
     <div class="recipe-card">
-    Name: ${recipes.results[i].name}<br>
-    Description: ${recipes.results[i].description}<br>
-    <div class="imgs">    
-    <img src="${recipes.results[i].thumbnail_url}">
+    <h1>Name: ${recipes.results[i].name}<br></h1>
+        <div class="img_div">    
+    <img class="imgs" src="${recipes.results[i].thumbnail_url}"><br>
     </div>
-    </div>
+    <p>Description: ${recipes.results[i].description}<br>
+    </div></p>
     `;
   }
 };

@@ -2,9 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+    @apply font-semibold w-96
+}
+
 .recipe-card {
-    @apply flex bg-pink-200 text-black border-4 p-4 rounded-lg hover:bg-pink-700; 
+    @apply m-5 flex-wrap h-auto w-96 bg-pink-200 text-black border-4 p-4 rounded-lg hover:bg-pink-700; 
 }
 .imgs {
-    @apply object-cover h-48 w-96; 
+    @apply object-cover w-96 h-48; 
+}
+
+/* .img_div {
+    @apply w-auto h-32;
+} */
+
+p {
+    @apply  font-medium w-96 h-auto
 }

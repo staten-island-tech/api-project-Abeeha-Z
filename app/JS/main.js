@@ -1,3 +1,5 @@
+import "../CSS/style.css";
+
 const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=100";
 const options = {
   method: "GET",
@@ -26,9 +28,12 @@ const showRecipes = async () => {
   for (let i = 0; i < recipes.results.length; i++) {
     //if recipe has a thumbnail, url and description
     container.innerHTML += `
-    <div>
+    <div class="recipe-card">
     Name: ${recipes.results[i].name}<br>
     Description: ${recipes.results[i].description}<br>
+    <div class="imgs">    
+    <img src="${recipes.results[i].thumbnail_url}">
+    </div>
     </div>
     `;
   }

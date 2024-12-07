@@ -10,24 +10,30 @@
 
 <body>
   <header>
-    <h1>Recipe Finder</h1>
-    <div id="filters">
-      <select id="meal-type">
-        <option value="">Select Meal</option>
-        <option value="breakfast">Breakfast</option>
-        <option value="lunch">Lunch</option>
-        <option value="dinner">Dinner</option>
-      </select>
-      <select id="cuisine">
-        <option value="">Select Cuisine</option>
-        <option value="Italian">Italian</option>
-        <option value="Mexican">Mexican</option>
-        <option value="Asian">Asian</option>
-      </select>
+    <div>    
+      <h1 class="text-center font-bold w-auto text-4xl m-4">Recipe Finder</h1>
+      <form class="absolute mx-4 px-4" action="/search" method="get">
+        <input type="search" id="search-bar" onkeyup="showSearchResults()" placeholder="Search..." />
+        <button class="border-2 px-3 mx-2" type="submit">Search</button>
+      </form>
+      <!-- <div class="m-5 text-center font-semibold text-lg" id="filters">
+        <select id="meal-type">
+          <option value="">Select Meal</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+        <select id="cuisine">
+          <option value="">Select Cuisine</option>
+          <option value="Italian">Italian</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Asian">Asian</option>
+        </select> -->
+      </div>
     </div>
   </header>
 
-  <div class="flex flex-wrap flex-row" id="recipe-list"></div>
+  <div class="place-content-center text-center flex flex-wrap flex-row" id="recipe-list"></div>
 
 
   <script type="module" src="./JS/main.js"></script>

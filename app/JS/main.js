@@ -1,6 +1,6 @@
 import "../CSS/style.css";
 
-const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=100";
+const url = "https://tasty.p.rapidapi.com/recipes/list?from=0";
 const options = {
   method: "GET",
   headers: {
@@ -22,21 +22,32 @@ async function getData() {
 
 const container = document.getElementById("recipe-list");
 const showRecipes = async () => {
-  // defining an async arrow function
+  container.innerHTML = "";
   const recipes = await getData(url);
   console.log("Data Found");
   for (let i = 0; i < recipes.results.length; i++) {
-    //if recipe has a thumbnail, url and description
-    container.innerHTML += `
-    <div class="recipe-card">
-    <h1>Name: ${recipes.results[i].name}<br></h1>
-        <div class="img_div">    
-    <img class="imgs" src="${recipes.results[i].thumbnail_url}"><br>
-    </div>
-    <p>Description: ${recipes.results[i].description}<br>
-    </div></p>
-    `;
+    if (recipes.results[i].description != "")
+      //if it has a description {
+      container.innerHTML += `
+      <div class="recipe-card">
+      <h2>${recipes.results[i].name}<br></h2> 
+      <div class="img_div">
+      <img class="imgs" src="${recipes.results[i].thumbnail_url}"><br>
+      </div>  
+      <div>${recipes.results[i].description}<br></div>
+      </div>
+      `;
   }
 };
 
+function showSearchResults() {
+  container.innerHTML = "";
+  const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+  // const searchURL = "https://tasty.p.rapidapi.com/recipes/list?from=0&tags=" + searchTerm;
+  console.log(
+    "https://tasty.p.rapidapi.com/recipes/list?from=0&tags=" + searchTerm
+  );
+}
+
+showSearchResults();
 showRecipes();

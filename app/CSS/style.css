@@ -2,21 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-    @apply font-semibold w-96
+h2 {
+    @apply font-semibold w-96 text-xl m-1;
 }
 
 .recipe-card {
-    @apply m-5 flex-wrap h-auto w-96 bg-pink-200 text-black border-4 p-4 rounded-lg hover:bg-pink-700; 
+    @apply m-1 flex flex-wrap h-auto w-96 bg-pink-200 text-black border-4 p-6 rounded-lg hover:bg-pink-700; 
 }
 .imgs {
-    @apply object-cover w-96 h-48; 
+    @apply object-cover w-full h-full; 
 }
 
-/* .img_div {
-    @apply w-auto h-32;
-} */
+.img_div {
+    @apply w-full h-48 border-4 my-3;
+}
 
-p {
-    @apply  font-medium w-96 h-auto
+.description {
+    @apply text-sm w-96 h-auto;
 }

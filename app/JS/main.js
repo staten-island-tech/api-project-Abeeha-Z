@@ -45,11 +45,7 @@ search_button.addEventListener("click", function (event) {
   event.preventDefault();
   container.innerHTML = "";
   const searchTerm = document.getElementById("search-bar").value.toLowerCase();
-  const searchURL =
-    "https://tasty.p.rapidapi.com/recipes/list?from=0&size=40&tags=" +
-    searchTerm +
-    "&q=" +
-    searchTerm;
+  const searchURL = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=${searchTerm}&q=${searchTerm}`;
   showRecipes(searchURL);
 });
 

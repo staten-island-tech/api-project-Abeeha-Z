@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe Filter</title>
+  <title>Tasty Recipe Finder</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,9 +12,9 @@
   <header>
     <div>    
       <h1 class="text-center font-bold w-auto text-4xl m-4">Recipe Finder</h1>
-      <form class="absolute mx-4 px-4" action="/search" method="get">
-        <input type="search" id="search-bar" onkeyup="showSearchResults()" placeholder="Search..." />
-        <button class="border-2 px-3 mx-2" type="submit">Search</button>
+      <form class="mx-4 px-4" action="/search" method="get">
+        <input type="search" id="search-bar" placeholder="Search..." />
+        <button class="border-2 px-3 mx-2" id="search_btn" type="submit">Search</button>
       </form>
       <!-- <div class="m-5 text-center font-semibold text-lg" id="filters">
         <select id="meal-type">

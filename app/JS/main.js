@@ -9,7 +9,7 @@ const options = {
   },
 };
 
-async function getData() {
+async function getData(url) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
@@ -21,7 +21,7 @@ async function getData() {
 }
 
 const container = document.getElementById("recipe-list");
-const showRecipes = async () => {
+const showRecipes = async (url) => {
   container.innerHTML = "";
   const recipes = await getData(url);
   console.log("Data Found");
@@ -40,14 +40,17 @@ const showRecipes = async () => {
   }
 };
 
-function showSearchResults() {
+const search_button = document.getElementById("search_btn");
+search_button.addEventListener("click", function (event) {
+  event.preventDefault();
   container.innerHTML = "";
   const searchTerm = document.getElementById("search-bar").value.toLowerCase();
-  // const searchURL = "https://tasty.p.rapidapi.com/recipes/list?from=0&tags=" + searchTerm;
-  console.log(
-    "https://tasty.p.rapidapi.com/recipes/list?from=0&tags=" + searchTerm
-  );
-}
+  const searchURL =
+    "https://tasty.p.rapidapi.com/recipes/list?from=0&size=40&tags=" +
+    searchTerm +
+    "&q=" +
+    searchTerm;
+  showRecipes(searchURL);
+});
 
-showSearchResults();
-showRecipes();
+showRecipes(url);

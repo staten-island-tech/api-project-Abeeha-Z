@@ -24,15 +24,18 @@ const container = document.getElementById("recipe-list");
 const showRecipes = async (url) => {
   container.innerHTML = "";
   const recipes = await getData(url);
-  console.log("Data Found");
-  for (let i = 0; i < recipes.results.length; i++) {
-    const recipe = recipes.results[i];
-    let instruction_text = "";
-    for (let j = 0; j < recipe.instructions.length; j++) {
-      instruction_text += `<p>${recipe.instructions[j].display_text}</p>`;
-    }
-    if (recipe.description != "" && recipe.description != null) {
-      container.innerHTML += `
+  if (recipes.count === 0) {
+    container.innerHTML = `
+    <h1>No results. Please try again.</h1>`;
+  } else {
+    for (let i = 0; i < recipes.results.length; i++) {
+      const recipe = recipes.results[i];
+      let instruction_text = "";
+      for (let j = 0; j < recipe.instructions.length; j++) {
+        instruction_text += `<p>${recipe.instructions[j].display_text}</p>`;
+      }
+      if (recipe.description != "" && recipe.description != null) {
+        container.innerHTML += `
       <div class="recipe-card">
       <h2>${recipe.name}<br></h2> 
       <div class="img_div">
@@ -44,9 +47,9 @@ const showRecipes = async (url) => {
       <h2>Description: </h2> ${recipe.description} <br>
       <h2>Instructions: </h2>${instruction_text}<br></p>
       </div>
-        
       </div>
       `;
+      }
     }
   }
 };

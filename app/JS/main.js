@@ -29,7 +29,7 @@ const showRecipes = async (url) => {
     const recipe = recipes.results[i];
     let instruction_text = "";
     for (let j = 0; j < recipe.instructions.length; j++) {
-      instruction_text += `<p>${recipe.instructions[j].display_text}</p><br>`;
+      instruction_text += `<p>${recipe.instructions[j].display_text}</p>`;
     }
     if (recipe.description != "" && recipe.description != null) {
       container.innerHTML += `
@@ -38,8 +38,12 @@ const showRecipes = async (url) => {
       <div class="img_div">
       <img class="imgs" src="${recipe.thumbnail_url}"><br>
       </div>  
-      <div class="description"><p>Description: ${recipe.description}<br>
-      <div>Instructions: ${instruction_text}<br></p></div></div>
+      <div class="basic_info"><p>Calories: ${recipe.nutrition.calories}, ${recipe.yields}<br></p>
+      </div>
+      <div class="info">
+      <h2>Description: </h2> ${recipe.description} <br>
+      <h2>Instructions: </h2>${instruction_text}<br></p>
+      </div>
         
       </div>
       `;

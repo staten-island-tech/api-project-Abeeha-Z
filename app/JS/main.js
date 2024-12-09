@@ -1,6 +1,6 @@
 import "../CSS/style.css";
 
-const url = "https://tasty.p.rapidapi.com/recipes/list?from=0";
+const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=40";
 const options = {
   method: "GET",
   headers: {
@@ -26,17 +26,24 @@ const showRecipes = async (url) => {
   const recipes = await getData(url);
   console.log("Data Found");
   for (let i = 0; i < recipes.results.length; i++) {
-    if (recipes.results[i].description != "")
-      //if it has a description {
+    const recipe = recipes.results[i];
+    let instruction_text = "";
+    for (let j = 0; j < recipe.instructions.length; j++) {
+      instruction_text += `<p>${recipe.instructions[j].display_text}</p><br>`;
+    }
+    if (recipe.description != "" && recipe.description != null) {
       container.innerHTML += `
       <div class="recipe-card">
-      <h2>${recipes.results[i].name}<br></h2> 
+      <h2>${recipe.name}<br></h2> 
       <div class="img_div">
-      <img class="imgs" src="${recipes.results[i].thumbnail_url}"><br>
+      <img class="imgs" src="${recipe.thumbnail_url}"><br>
       </div>  
-      <div>${recipes.results[i].description}<br></div>
+      <div class="description"><p>Description: ${recipe.description}<br>
+      <div>Instructions: ${instruction_text}<br></p></div></div>
+        
       </div>
       `;
+    }
   }
 };
 
@@ -45,7 +52,7 @@ search_button.addEventListener("click", function (event) {
   event.preventDefault();
   container.innerHTML = "";
   const searchTerm = document.getElementById("search-bar").value.toLowerCase();
-  const searchURL = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=${searchTerm}&q=${searchTerm}`;
+  const searchURL = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=40&tags=${searchTerm}&q=${searchTerm}`;
   showRecipes(searchURL);
 });
 

@@ -7,7 +7,7 @@ h2 {
 }
 
 .recipe-card {
-    @apply m-2 flex flex-wrap h-auto w-96 bg-pink-200 text-black border-4 p-6 rounded-lg hover:bg-pink-700; 
+    @apply m-2 flex flex-wrap h-auto w-96 bg-pink-200 text-black border-4 p-6 rounded-lg hover:bg-pink-400 hover:scale-110 ease-out duration-500; 
 }
 .imgs {
     @apply object-cover w-full h-full; 
@@ -17,6 +17,6 @@ h2 {
     @apply w-full h-48 border-4 my-3;
 }
 
-.description {
-    @apply text-sm w-96 h-auto;
+.info {
+    @apply text-sm w-96 h-32 overflow-hidden text-ellipsis hover:overflow-y-scroll;
 }

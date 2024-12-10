@@ -4,7 +4,7 @@ const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=40";
 const options = {
   method: "GET",
   headers: {
-    "x-rapidapi-key": "11bed04c27mshb6f8302c8454cabp10afc7jsnc701adc4abf2",
+    "x-rapidapi-key": "f622572513mshb02186feb035c8ep189d8djsn23dd7e3096c6",
     "x-rapidapi-host": "tasty.p.rapidapi.com",
   },
 };
@@ -58,8 +58,11 @@ const search_button = document.getElementById("search_btn");
 search_button.addEventListener("click", function (event) {
   event.preventDefault();
   container.innerHTML = "";
-  const searchTerm = document.getElementById("search-bar").value.toLowerCase();
-  const searchURL = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=40&tags=${searchTerm}&q=${searchTerm}`;
+  const searchTerm = encodeURIComponent(
+    document.getElementById("search-bar").value.toLowerCase()
+  );
+  const searchURL = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=40&&q=${searchTerm}`;
+  console.log(searchURL);
   showRecipes(searchURL);
 });
 
